@@ -1,0 +1,132 @@
+## Step-by-Step Explanation of Code
+
+### Step 1 — Variable Declaration
+
+```cpp
+int LDR_VAL = 0;
+```
+
+A variable named `LDR_VAL` is created to store the light sensor value read from the LDR.
+
+---
+
+### Step 2 — Setup Function
+
+```cpp
+void setup()
+{
+  pinMode(A0, INPUT);
+  Serial.begin(9600);
+  pinMode(10, OUTPUT);
+}
+```
+
+#### `pinMode(A0, INPUT);`
+
+Sets analog pin A0 as an input pin to receive values from the LDR sensor.
+
+#### `Serial.begin(9600);`
+
+Starts serial communication between Arduino and Serial Monitor at 9600 baud rate.
+
+#### `pinMode(10, OUTPUT);`
+
+Sets digital pin 10 as an output pin to control the LED.
+
+---
+
+### Step 3 — Loop Function
+
+```cpp
+void loop()
+{
+```
+
+The `loop()` function runs continuously again and again.
+
+---
+
+### Step 4 — Read Sensor Value
+
+```cpp
+LDR_VAL = analogRead(A0);
+```
+
+Arduino reads the analog value from the LDR sensor connected to pin A0 and stores it in `LDR_VAL`.
+
+---
+
+### Step 5 — Display Sensor Value
+
+```cpp
+Serial.println(LDR_VAL);
+```
+
+Displays the LDR sensor value in the Serial Monitor.
+
+---
+
+### Step 6 — Check Light Condition
+
+```cpp
+if (LDR_VAL > 500) {
+```
+
+Checks whether the LDR value is greater than 500.
+
+* Higher value → Darkness
+* Lower value → Bright light
+
+---
+
+### Step 7 — Turn ON LED
+
+```cpp
+digitalWrite(10, HIGH);
+```
+
+If the environment is dark, Arduino turns ON the LED connected to pin 10.
+
+---
+
+### Step 8 — Turn OFF LED
+
+```cpp
+else {
+  digitalWrite(10, LOW);
+}
+```
+
+If light is present, Arduino turns OFF the LED.
+
+---
+
+### Step 9 — Delay
+
+```cpp
+delay(10);
+```
+
+Adds a small delay to improve simulation performance.
+
+---
+
+# How the LDR Sensor Works
+
+The LDR (Light Dependent Resistor) is a sensor that detects light intensity.
+
+* In bright light, LDR resistance decreases.
+* In darkness, LDR resistance increases.
+
+Arduino reads these changing voltage values through analog pin A0.
+
+---
+
+# What This Project Does
+
+This project works as an Automatic Street Light System.
+
+* In darkness → LED turns ON automatically
+* In light → LED turns OFF automatically
+
+This helps in energy saving and smart lighting automation.
